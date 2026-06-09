@@ -7,8 +7,8 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
-    environment: Dev
+    runs-on: self-hosted
+    environment: PROD
 
     steps:
       - name: Checkout code
