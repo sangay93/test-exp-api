@@ -45,6 +45,7 @@
 						<region>${region}</region>
 						<connectedAppClientId>${anypoint.clientId}</connectedAppClientId>
 						<connectedAppClientSecret>${anypoint.clientSecret}</connectedAppClientSecret>
+						<organizationId>${anypoint.orgId}</organizationId>
 					</cloudHubDeployment>
 				</configuration>
 
