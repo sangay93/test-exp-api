@@ -43,8 +43,10 @@
 						<workers>${workers}</workers>
 						<workerType>${workerType}</workerType>
 						<region>${region}</region>
-						<connectedAppClientId>${anypoint.clientId}</connectedAppClientId>
-						<connectedAppClientSecret>${anypoint.clientSecret}</connectedAppClientSecret>
+						<connectedAppClientId>${env.ANYPOINT_CLIENT_ID}</connectedAppClientId>
+						<connectedAppClientSecret>${env.ANYPOINT_CLIENT_SECRET}</connectedAppClientSecret>
+						<organizationId>${env.ANYPOINT_ORG_ID}</organizationId>
+						<businessGroup>${env.ANYPOINT_BUSINESS_GROUP}</businessGroup>
 					</cloudHubDeployment>
 				</configuration>
 
