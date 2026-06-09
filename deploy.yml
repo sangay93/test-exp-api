@@ -25,6 +25,8 @@ jobs:
             ANYPOINT_CLIENT_ID: ${{ secrets.ANYPOINT_CLIENT_ID }}
             ANYPOINT_CLIENT_SECRET: ${{ secrets.ANYPOINT_CLIENT_SECRET }}
             ANYPOINT_ORG_ID: ${{ secrets.ANYPOINT_ORG_ID }}
+            ANYPOINT_BUSINESS_GROUP: ${{ secrets.ANYPOINT_BUSINESS_GROUP }}
+
           run: |
             mvn clean deploy -DmuleDeploy \
               -Dapp.name=${{ vars.APP_NAME }} \
