@@ -21,18 +21,14 @@ jobs:
           java-version: 17
 
       - name: Build & Deploy
-         env:
-            ANYPOINT_CLIENT_ID: ${{ secrets.ANYPOINT_CLIENT_ID }}
-            ANYPOINT_CLIENT_SECRET: ${{ secrets.ANYPOINT_CLIENT_SECRET }}
-            ANYPOINT_ORG_ID: ${{ secrets.ANYPOINT_ORG_ID }}
-            ANYPOINT_BUSINESS_GROUP: ${{ secrets.ANYPOINT_BUSINESS_GROUP }}
-
-          run: |
-            mvn clean deploy -DmuleDeploy \
-              -Dapp.name=${{ vars.APP_NAME }} \
-              -Ddeploy.environment=${{ vars.DEPLOY_ENVIRONMENT }} \
-              -Dworkers=${{ vars.WORKERS }} \
-              -DworkerType=${{ vars.WORKER_TYPE }} \
-              -Dregion=${{ vars.REGION }}
-          
-       
+        env:
+          ANYPOINT_CLIENT_ID: ${{ secrets.ANYPOINT_CLIENT_ID }}
+          ANYPOINT_CLIENT_SECRET: ${{ secrets.ANYPOINT_CLIENT_SECRET }}
+          ANYPOINT_ORG_ID: ${{ secrets.ANYPOINT_ORG_ID }}
+        run: |
+          mvn clean deploy -DmuleDeploy \
+            -Dapp.name=${{ vars.APP_NAME }} \
+            -Ddeploy.environment=${{ vars.DEPLOY_ENVIRONMENT }} \
+            -Dworkers=${{ vars.WORKERS }} \
+            -DworkerType=${{ vars.WORKER_TYPE }} \
+            -Dregion=${{ vars.REGION }}
