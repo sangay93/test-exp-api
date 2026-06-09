@@ -1,0 +1,33 @@
+name: Deploy Mule Application to CloudHub
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: Dev
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Build & Deploy
+        run: |
+          mvn clean deploy -DmuleDeploy \
+            -Dapp.name=${{ vars.APP_NAME }} \
+            -Ddeploy.environment=${{ vars.DEPLOY_ENVIRONMENT }} \
+            -Dworkers=${{ vars.WORKERS }} \
+            -DworkerType=${{ vars.WORKER_TYPE }} \
+            -Dregion=${{ vars.REGION }} \
+            -Danypoint.clientId=${{ secrets.ANYPOINT_CLIENT_ID }} \
+            -Danypoint.clientSecret=${{ secrets.ANYPOINT_CLIENT_SECRET }} \
+            -Danypoint.orgId=${{ secrets.ANYPOINT_ORG_ID }}
